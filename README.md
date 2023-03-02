@@ -13,7 +13,6 @@ A Very Good Project created by Very Good CLI.
 ## Getting Started 🚀
 
 ```sh
-# Production
 $ make run
 ```
 ---
