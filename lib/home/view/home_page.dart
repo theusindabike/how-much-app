@@ -1,11 +1,12 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:how_much/home/view/datail_page.dart';
 
-class AmountValue {
-  const AmountValue({required this.value});
+class SalaryInfos {
+  const SalaryInfos({required this.amountValue});
 
-  final double value;
+  final double amountValue;
 }
 
 class MainForm extends StatefulWidget {
@@ -41,14 +42,20 @@ class _MainFormState extends State<MainForm> {
                 keyboardType: TextInputType.number,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      String value =
-                          _formatter.getUnformattedValue().toString();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Processing Data: $value')),
+                      double value =
+                          _formatter.getUnformattedValue().toDouble();
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailScreen(
+                            salaryInfos: SalaryInfos(amountValue: value),
+                          ),
+                        ),
                       );
                     }
                   },
@@ -69,19 +76,5 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MainForm();
-  }
-}
-
-class ListView extends StatelessWidget {
-  const ListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: const Text('Calculate'),
-        onPressed: () {},
-      ),
-    );
   }
 }
