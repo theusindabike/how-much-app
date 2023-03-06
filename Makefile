@@ -1,5 +1,5 @@
 run:
-	flutter run --flavor production --target lib/main_production.dart
+	flutter run --flavor development --target lib/main_development.dart
 
 
 build:

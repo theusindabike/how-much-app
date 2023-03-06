@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:how_much/counter/counter.dart';
-import 'package:how_much/l10n/l10n.dart';
+import 'package:how_much/home/home.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,9 +13,7 @@ class App extends StatelessWidget {
           accentColor: const Color(0xFF13B9FF),
         ),
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const HomePage(),
     );
   }
 }
