@@ -25,7 +25,9 @@ class DetailScreen extends StatelessWidget {
             Center(
               child: FutureBuilder<CountryDetail>(
                 future: fetchCountryDetail(
-                    http.Client(), salaryInfos.amountValue ?? 0),
+                  http.Client(),
+                  salaryInfos.amountValue ?? 0,
+                ),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return const Center(
@@ -48,7 +50,9 @@ class DetailScreen extends StatelessWidget {
   }
 
   Future<CountryDetail> fetchCountryDetail(
-      http.Client http, amountValue) async {
+    http.Client http,
+    double amountValue,
+  ) async {
     final url = 'http://172.17.0.1/brazil/$amountValue';
     final response = await http.get(Uri.parse(url));
 

@@ -4,21 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:how_much/home/view/datail_page.dart';
 
 class SalaryInfos {
-  SalaryInfos(double amountValue, List<CountryDetail> countryDetail) {
-    this.amountValue = amountValue;
-    this.countryDetail = countryDetail;
-  }
-  //SalaryInfos(this.countryDetail, this.amountValue);
+  SalaryInfos(double this.amountValue, List<CountryDetail> this.countryDetail);
+
   double? amountValue;
   List<CountryDetail>? countryDetail;
 }
 
 class CountryDetail {
-  final String country;
-  final String result;
+  CountryDetail({required this.country, required this.result});
 
-  const CountryDetail({required this.country, required this.result});
+  String country;
+  String result;
 
+  // ignore: sort_constructors_first
   factory CountryDetail.fromJson(Map<String, dynamic> json) {
     return CountryDetail(
       country: json['country'] as String,
@@ -64,8 +62,7 @@ class _MainFormState extends State<MainForm> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
-                      double value =
-                          _formatter.getUnformattedValue().toDouble();
+                      final value = _formatter.getUnformattedValue().toDouble();
                       //TODO: Try named route approach (https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments)
                       Navigator.push(
                         context,
